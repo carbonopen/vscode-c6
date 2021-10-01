@@ -1,0 +1,34 @@
+{
+    "name": "co2",
+    "displayName": "co2",
+    "description": "Co2 support language",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.60.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "co2",
+                "aliases": [
+                    "co2",
+                    "co2"
+                ],
+                "extensions": [
+                    "co2"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "co2",
+                "scopeName": "co2",
+                "path": "./syntaxes/co2.tmLanguage.json"
+            }
+        ]
+    }
+}

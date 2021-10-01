@@ -1,0 +1,653 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "co2",
+	"scopeName": "co2",
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#constructs"
+		},
+		{
+			"include": "#variable"
+		},
+		{
+			"include": "#code"
+		}
+	],
+	"repository": {
+		"code": {
+			"patterns": [
+				{
+					"begin": "```(js|javascript)\n",
+					"end": "```",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.code.open"
+						}
+					},
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.code.close"
+						}
+					},
+					"name": "meta.embedded.block.javascript",
+					"patterns": [
+						{
+							"include": "source.js"
+						}
+					]
+				},
+				{
+					"begin": "```typescript\n",
+					"end": "```",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.code.open"
+						}
+					},
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.code.close"
+						}
+					},
+					"name": "meta.embedded.block.typescript",
+					"patterns": [
+						{
+							"include": "source.ts"
+						}
+					]
+				},
+				{
+					"begin": "```json\n",
+					"end": "```",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.code.open"
+						}
+					},
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.code.close"
+						}
+					},
+					"name": "meta.embedded.block.json",
+					"patterns": [
+						{
+							"include": "source.json"
+						}
+					]
+				},
+				{
+					"begin": "```go\n",
+					"end": "```",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.code.open"
+						}
+					},
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.code.close"
+						}
+					},
+					"name": "meta.embedded.block.go",
+					"patterns": [
+						{
+							"include": "source.go"
+						}
+					]
+				},
+				{
+					"begin": "```(yml|yaml)\n",
+					"end": "```",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.code.open"
+						}
+					},
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.code.close"
+						}
+					},
+					"name": "meta.embedded.block.yaml",
+					"patterns": [
+						{
+							"include": "source.yaml"
+						}
+					]
+				},
+				{
+					"begin": "```(html|text)\n",
+					"end": "```",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.code.open"
+						}
+					},
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.code.close"
+						}
+					},
+					"name": "meta.embedded.block.html",
+					"patterns": [
+						{
+							"include": "text.html.derivative"
+						}
+					]
+				},
+				{
+					"begin": "```(md|markdown)\n",
+					"end": "```",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.code.open"
+						}
+					},
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.code.close"
+						}
+					},
+					"name": "meta.embedded.block.html",
+					"patterns": [
+						{
+							"include": "text.html.markdown"
+						}
+					]
+				},
+				{
+					"begin": "```python\n",
+					"end": "```",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.code.open"
+						}
+					},
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.code.close"
+						}
+					},
+					"name": "meta.embedded.block.python",
+					"patterns": [
+						{
+							"include": "source.python"
+						}
+					]
+				},
+				{
+					"begin": "```rhai\n",
+					"end": "```",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.code.open"
+						}
+					},
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.code.close"
+						}
+					},
+					"name": "meta.embedded.block.rhai",
+					"patterns": [
+						{
+							"include": "source.rhai"
+						}
+					]
+				},
+				{
+					"begin": "```php\n",
+					"end": "```",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.code.open"
+						}
+					},
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.code.close"
+						}
+					},
+					"name": "meta.embedded.block.php",
+					"patterns": [
+						{
+							"include": "source.php"
+						}
+					]
+				},
+				{
+					"begin": "```(sh|bash|shell)\n",
+					"end": "```",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.code.open"
+						}
+					},
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.code.close"
+						}
+					},
+					"name": "meta.embedded.block.shell",
+					"patterns": [
+						{
+							"include": "source.shell"
+						}
+					]
+				},
+				{
+					"begin": "```xml\n",
+					"end": "```",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.code.open"
+						}
+					},
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.code.close"
+						}
+					},
+					"name": "meta.embedded.block.xml",
+					"patterns": [
+						{
+							"include": "text.xml"
+						}
+					]
+				},
+				{
+					"begin": "(```hbs|```)\n",
+					"end": "```",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.code.open"
+						}
+					},
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.code.close"
+						}
+					},
+					"name": "meta.embedded.block.hbs",
+					"patterns": [
+						{
+							"include": "text.html.handlebars"
+						}
+					]
+				}
+			]
+		},
+		"comments": {
+			"patterns": [
+				{
+					"comment": "Single line comments with number-sign",
+					"match": "(#)+(.*)",
+					"captures": {
+						"0": {
+							"name": "comment.line.number-sign.co2"
+						}
+					}
+				},
+				{
+					"comment": "Single line comments with double-slash",
+					"match": "(//)+(.*)",
+					"captures": {
+						"0": {
+							"name": "comment.line.double-slash.co2"
+						}
+					}
+				},
+				{
+					"comment": "Multiple line comment block",
+					"begin": "/\\*",
+					"beginCaptures": {
+						"0": {
+							"name": "comment.block.documentation.co2"
+						}
+					},
+					"end": "\\*/",
+					"endCaptures": {
+						"0": {
+							"name": "comment.block.documentation.co2"
+						}
+					},
+					"contentName": "comment.block.documentation.co2"
+				}
+			]
+		},
+		"constructs": {
+			"patterns": [
+				{
+					"begin": "([\\w-]+)\\s*\\{",
+					"beginCaptures": {
+						"0": {
+							"name": "meta.function.co2"
+						},
+						"1": {
+							"name": "storage.type.co2"
+						}
+					},
+					"end": "\\}",
+					"patterns": [
+						{
+							"include": "$self"
+						},
+						{
+							"include": "#comments"
+						},
+						{
+							"include": "#variable"
+						}
+					]
+				},
+				{
+					"begin": "([\\w-]+)((?:\\s*\"[^\"]*\")*)\\s*\\{",
+					"beginCaptures": {
+						"0": {
+							"name": "meta.function.co2"
+						},
+						"1": {
+							"name": "storage.type.co2"
+						},
+						"2": {
+							"name": "string.quoted.double.co2"
+						}
+					},
+					"end": "\\}",
+					"patterns": [
+						{
+							"include": "$self"
+						},
+						{
+							"include": "#comments"
+						},
+						{
+							"include": "#variable"
+						}
+					]
+				}
+			]
+		},
+		"variable": {
+			"patterns": [
+				{
+					"begin": "([\\w\\.-]+)\\s*(=)\\s*",
+					"beginCaptures": {
+						"1": {
+							"name": "variable.parameter.co2"
+						},
+						"2": {
+							"name": "keyword.operator.co2"
+						}
+					},
+					"end": "(?<!\\2)$",
+					"endCaptures": {
+						"0": {
+							"name": "keyword.operator.co2"
+						}
+					},
+					"patterns": [
+						{
+							"include": "#variable-type-string"
+						},
+						{
+							"include": "#variable-type-heredoc"
+						},
+						{
+							"include": "#variable-type-hexadecimal"
+						},
+						{
+							"include": "#variable-type-decimal"
+						},
+						{
+							"include": "#variable-type-constant"
+						},
+						{
+							"include": "#variable-type-array"
+						},
+						{
+							"include": "#variable-type-map"
+						}
+					]
+				}
+			]
+		},
+		"variable-interpolation": {
+			"patterns": [
+				{
+					"begin": "\\$\\{",
+					"beginCaptures": {
+						"0": {
+							"name": "keyword.operator.co2"
+						}
+					},
+					"end": "\\}",
+					"endCaptures": {
+						"0": {
+							"name": "keyword.operator.co2"
+						}
+					},
+					"patterns": [
+						{
+							"include": "#variable-interpolation-function"
+						},
+						{
+							"include": "#variable-interpolation-reference"
+						}
+					]
+				}
+			]
+		},
+		"variable-interpolation-function": {
+			"patterns": [
+				{
+					"begin": "([\\w-]+)\\(",
+					"beginCaptures": {
+						"1": {
+							"name": "entity.name.function.co2"
+						}
+					},
+					"end": "\\)",
+					"patterns": [
+						{
+							"include": "#variable-interpolation-function"
+						},
+						{
+							"include": "#variable-interpolation-reference"
+						},
+						{
+							"include": "#variable-type-hexadecimal"
+						},
+						{
+							"include": "#variable-type-decimal"
+						},
+						{
+							"include": "#variable-type-constant"
+						},
+						{
+							"include": "#variable-type-string"
+						}
+					]
+				}
+			]
+		},
+		"variable-interpolation-reference": {
+			"patterns": [
+				{
+					"match": "\\b([\\w-]+)((\\.[\\w-]+)*)\\b",
+					"captures": {
+						"1": {
+							"name": "storage.modifier.co2"
+						},
+						"2": {
+							"name": "entity.name.type.co2"
+						}
+					}
+				}
+			]
+		},
+		"variable-type-array": {
+			"patterns": [
+				{
+					"begin": "\\[",
+					"end": "\\]",
+					"patterns": [
+						{
+							"include": "#variable-type-decimal"
+						},
+						{
+							"include": "#variable-type-hexadecimal"
+						},
+						{
+							"include": "#variable-type-constant"
+						},
+						{
+							"include": "#variable-type-string"
+						},
+						{
+							"match": "\\s*,\\s*"
+						}
+					]
+				}
+			]
+		},
+		"variable-type-map": {
+			"patterns": [
+				{
+					"begin": "\\{",
+					"end": "\\}",
+					"patterns": [
+						{
+							"begin": "(\"[\\w\\s\\.-]+\")\\s*(:)",
+							"beginCaptures": {
+								"1": {
+									"name": "string.quoted.double.co2"
+								},
+								"2": {
+									"name": "keyword.operator.co2"
+								}
+							},
+							"end": "(?<!\\2)\\s*($|(?=\\}))",
+							"endCaptures": {
+								"0": {
+									"name": "keyword.operator.co2"
+								}
+							},
+							"patterns": [
+								{
+									"include": "#variable-type-decimal"
+								},
+								{
+									"include": "#variable-type-hexadecimal"
+								},
+								{
+									"include": "#variable-type-constant"
+								},
+								{
+									"include": "#variable-type-string"
+								},
+								{
+									"match": "\\s*,\\s*"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		"variable-type-hexadecimal": {
+			"patterns": [
+				{
+					"comment": "Numbers in hexadecimal with optional suffixes",
+					"match": "0x[0-9A-Fa-f]+([kKmMgG]b?)?",
+					"captures": {
+						"0": {
+							"name": "constant.numeric.co2"
+						}
+					}
+				}
+			]
+		},
+		"variable-type-decimal": {
+			"patterns": [
+				{
+					"comment": "Numbers in decimal with optional suffixes",
+					"match": "\\b[0-9\\.]+([kKmMgG]b?)?\\b",
+					"captures": {
+						"0": {
+							"name": "constant.numeric.co2"
+						}
+					}
+				}
+			]
+		},
+		"variable-type-constant": {
+			"patterns": [
+				{
+					"match": "\\b(true|false|yes|no|on|off)\\b",
+					"captures": {
+						"0": {
+							"name": "constant.numeric.co2"
+						}
+					}
+				}
+			]
+		},
+		"variable-type-string": {
+			"patterns": [
+				{
+					"comment": "Usual string",
+					"begin": "\"",
+					"beginCaptures": {
+						"0": {
+							"name": "string.quoted.double.co2"
+						}
+					},
+					"end": "\"",
+					"endCaptures": {
+						"0": {
+							"name": "string.quoted.double.co2"
+						}
+					},
+					"patterns": [
+						{
+							"include": "#variable-interpolation"
+						},
+						{
+							"match": "[^\"]",
+							"captures": {
+								"0": {
+									"name": "string.quoted.double.co2"
+								}
+							}
+						}
+					]
+				}
+			]
+		},
+		"variable-type-heredoc": {
+			"patterns": [
+				{
+					"comment": "Heredoc string",
+					"begin": "<<(\\w+)",
+					"beginCaptures": {
+						"0": {
+							"name": "entity.name.section"
+						}
+					},
+					"end": "^\\s*\\1$",
+					"endCaptures": {
+						"0": {
+							"name": "entity.name.section"
+						}
+					},
+					"contentName": "string.unquoted.here-doc.co2"
+				}
+			]
+		}
+	}
+}
