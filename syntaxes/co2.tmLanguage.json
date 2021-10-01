@@ -4,6 +4,9 @@
 	"scopeName": "co2",
 	"patterns": [
 		{
+			"include": "#embedded"
+		},
+		{
 			"include": "#comments"
 		},
 		{
@@ -11,13 +14,10 @@
 		},
 		{
 			"include": "#variable"
-		},
-		{
-			"include": "#code"
 		}
 	],
 	"repository": {
-		"code": {
+		"embedded": {
 			"patterns": [
 				{
 					"begin": "```(js|javascript)\n",
@@ -345,16 +345,13 @@
 					]
 				},
 				{
-					"begin": "([\\w-]+)((?:\\s*\"[^\"]*\")*)\\s*\\{",
+					"begin": "([\\w-]+)\\s([\\w-]+)\\s*\\{",
 					"beginCaptures": {
 						"0": {
 							"name": "meta.function.co2"
 						},
 						"1": {
 							"name": "storage.type.co2"
-						},
-						"2": {
-							"name": "string.quoted.double.co2"
 						}
 					},
 					"end": "\\}",
@@ -395,9 +392,6 @@
 							"include": "#variable-type-string"
 						},
 						{
-							"include": "#variable-type-heredoc"
-						},
-						{
 							"include": "#variable-type-hexadecimal"
 						},
 						{
@@ -411,6 +405,9 @@
 						},
 						{
 							"include": "#variable-type-map"
+						},
+						{
+							"include": "#embedded"
 						}
 					]
 				}
@@ -439,54 +436,6 @@
 							"include": "#variable-interpolation-reference"
 						}
 					]
-				}
-			]
-		},
-		"variable-interpolation-function": {
-			"patterns": [
-				{
-					"begin": "([\\w-]+)\\(",
-					"beginCaptures": {
-						"1": {
-							"name": "entity.name.function.co2"
-						}
-					},
-					"end": "\\)",
-					"patterns": [
-						{
-							"include": "#variable-interpolation-function"
-						},
-						{
-							"include": "#variable-interpolation-reference"
-						},
-						{
-							"include": "#variable-type-hexadecimal"
-						},
-						{
-							"include": "#variable-type-decimal"
-						},
-						{
-							"include": "#variable-type-constant"
-						},
-						{
-							"include": "#variable-type-string"
-						}
-					]
-				}
-			]
-		},
-		"variable-interpolation-reference": {
-			"patterns": [
-				{
-					"match": "\\b([\\w-]+)((\\.[\\w-]+)*)\\b",
-					"captures": {
-						"1": {
-							"name": "storage.modifier.co2"
-						},
-						"2": {
-							"name": "entity.name.type.co2"
-						}
-					}
 				}
 			]
 		},
@@ -588,7 +537,7 @@
 		"variable-type-constant": {
 			"patterns": [
 				{
-					"match": "\\b(true|false|yes|no|on|off)\\b",
+					"match": "\\b(true|false)\\b",
 					"captures": {
 						"0": {
 							"name": "constant.numeric.co2"
@@ -626,26 +575,6 @@
 							}
 						}
 					]
-				}
-			]
-		},
-		"variable-type-heredoc": {
-			"patterns": [
-				{
-					"comment": "Heredoc string",
-					"begin": "<<(\\w+)",
-					"beginCaptures": {
-						"0": {
-							"name": "entity.name.section"
-						}
-					},
-					"end": "^\\s*\\1$",
-					"endCaptures": {
-						"0": {
-							"name": "entity.name.section"
-						}
-					},
-					"contentName": "string.unquoted.here-doc.co2"
 				}
 			]
 		}

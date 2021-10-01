@@ -5,40 +5,46 @@ import {
     switch_2 {
         source="target/release/libswitch"
     }
-    payload "/health"  {
+    payload {
         source="target/release/libpayload"
-        payload {
-            source="target/release/libpayload"
-            source=123
+    }
+}
+
+pipeline {
+    http init {
+        path {
+            status_code="200"
+            body=```json
+                {
+                    health: true
+                }
+            ```
         }
+        path "/users" {
+            method=GET
+            attach request {
+                url: "http://other.api/users"
+                method: "GET"
+                attach "init"
+            }
+        }
+        # Comment 1
+        path {
+            path="/users"
+            method=DELETE
+            attach @db_delete
+        }
+        // Comment 2
+        path "/users" {
+            method=POST
+            attach db_save
+        }
+
+        /* Comment block
+            path "/users" {
+                method=POST
+                attach @save
+            }
+        */
     }
 }
-
-payload "/health"  {
-    source="target/release/libpayload"
-    payload_ {
-        source="target/release/libpayload"
-        source=123
-        body = ${ params.number  "a" 123 true ( asd ) + 1 asda sdas !@#%%!@#%$@#$@! }
-        source= <handler ref="oala" runtime=sql> 
-        
-        
-        </handler>
-    }
-
-    runtime "sql" {
-
-    }
-}
-/*
- payload {
-        source="target/release/libpayload"
-        source=123
-        body = ${ params.number  "a" 123 true ( asd ) + 1 asda sdas !@#%%!@#%$@#$@! }
-        source=123
-    }
-*/
-
-
-// asd asd asd
-#
