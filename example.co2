@@ -1,50 +1,74 @@
 import {
-    http {
-        source="target/release/libhttp_server"
-    }
-    switch_2 {
+    http (
+        souce="target/release/libhttp_server"
+    )
+    switch (
         source="target/release/libswitch"
-    }
-    payload {
+    )
+    payload (
         source="target/release/libpayload"
-    }
+    )
+    runtime "node.git"
+    ok
+    other "name" (
+        source=123
+    )
 }
 
 pipeline {
-    http init {
-        path {
-            status_code="200"
-            body=```json
-                {
-                    health: true
+    http init { // {"use": }
+        reutes ( // [{"reutes": [{"path": 123, "method":"GET"},{path},{path}]}]
+            path 123 (
+                method="GET"
+                attach request {
+                    url="http://other.api/users"
+                    method="GET"
+                    item=123.23
+                    attach init
                 }
-            ```
-        }
-        path "/users" {
-            method=GET
-            attach request {
-                url: "http://other.api/users"
-                method: "GET"
-                attach "init"
-            }
-        }
-        # Comment 1
-        path {
-            path="/users"
-            method=DELETE
-            attach @db_delete
-        }
-        // Comment 2
-        path "/users" {
-            method=POST
-            attach db_save
-        }
+            )
+
+            path 123 (
+                status_code="200"
+                body=```js
+                let item = require("asd");
+                return item
+                ```
+            )
+
+            path "/users" (
+                method="GET"
+                attach request {
+                    url="http://other.api/users"
+                    method="GET"
+                    ok= ${ variable.existe }
+                    attach init
+                }
+            )
+            // Comment 2
+            path {"item": true} (
+                method=POST
+                attach db_save
+            )
+            // Comment 2
+            path [true, 123] (
+                method=POST
+                attach db_save
+            )
+        )
 
         /* Comment block
             path "/users" {
                 method=POST
-                attach @save
+                attach save
             }
         */
+        attach init
+
+        attach request {
+                url="http://other.api/users"
+                method="GET"
+                attach init
+            }
     }
 }

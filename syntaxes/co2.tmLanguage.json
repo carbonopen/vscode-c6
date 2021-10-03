@@ -4,16 +4,13 @@
 	"scopeName": "co2",
 	"patterns": [
 		{
-			"include": "#embedded"
-		},
-		{
 			"include": "#comments"
 		},
 		{
-			"include": "#constructs"
+			"include": "#pipeline"
 		},
 		{
-			"include": "#variable"
+			"include": "#import"
 		}
 	],
 	"repository": {
@@ -284,15 +281,6 @@
 		"comments": {
 			"patterns": [
 				{
-					"comment": "Single line comments with number-sign",
-					"match": "(#)+(.*)",
-					"captures": {
-						"0": {
-							"name": "comment.line.number-sign.co2"
-						}
-					}
-				},
-				{
 					"comment": "Single line comments with double-slash",
 					"match": "(//)+(.*)",
 					"captures": {
@@ -319,16 +307,13 @@
 				}
 			]
 		},
-		"constructs": {
+		"pipeline": {
 			"patterns": [
 				{
-					"begin": "([\\w-]+)\\s*\\{",
-					"beginCaptures": {
+					"begin": "pipeline\\s*\\{",
+					"captures": {
 						"0": {
-							"name": "meta.function.co2"
-						},
-						"1": {
-							"name": "storage.type.co2"
+							"name": "support.type"
 						}
 					},
 					"end": "\\}",
@@ -337,39 +322,190 @@
 							"include": "$self"
 						},
 						{
-							"include": "#comments"
-						},
-						{
-							"include": "#variable"
-						}
-					]
-				},
-				{
-					"begin": "([\\w-]+)\\s([\\w-]+)\\s*\\{",
-					"beginCaptures": {
-						"0": {
-							"name": "meta.function.co2"
-						},
-						"1": {
-							"name": "storage.type.co2"
-						}
-					},
-					"end": "\\}",
-					"patterns": [
-						{
-							"include": "$self"
-						},
-						{
-							"include": "#comments"
-						},
-						{
-							"include": "#variable"
+							"include": "#modules"
 						}
 					]
 				}
 			]
 		},
-		"variable": {
+		"import": {
+			"patterns": [
+				{
+					"begin": "import\\s*\\{",
+					"captures": {
+						"0": {
+							"name": "support.type"
+						}
+					},
+					"end": "\\}",
+					"patterns": [
+						{
+							"include": "$self"
+						},
+						{
+							"include": "#modules_import"
+						}
+					]
+				}
+			]
+		},
+		"modules": {
+			"patterns": [
+				{
+					"begin": "([\\w-]+)((\\s([\\w-]+))|)\\s*\\{",
+					"beginCaptures": {
+						"0": {
+							"name": "entity.name.function"
+						},
+						"1": {
+							"name": "storage.type.struct"
+						}
+					},
+					"end": "\\}",
+					"patterns": [
+						{
+							"include": "$self"
+						},
+						{
+							"include": "#macro"
+						},
+						{
+							"include": "#attach"
+						},
+						{
+							"include": "#param"
+						}
+					]
+				}
+			]
+		},
+		"modules_import": {
+			"patterns": [
+				{
+					"begin": "([\\w-]+)(\\s\".*\"|)\\s*\\(",
+					"beginCaptures": {
+						"0": {
+							"name": "storage.type.struct",
+							"patterns": [
+								{
+									"include": "#string"
+								}
+							]
+						}
+					},
+					"end": "\\)",
+					"patterns": [
+						{
+							"include": "#param"
+						}
+					]
+				},
+				{
+					"match": "([\\w-]+)(\\s\".*\"|)",
+					"captures": {
+						"0": {
+							"name": "storage.type.struct",
+							"patterns": [
+								{
+									"include": "$self"
+								},
+								{
+									"include": "#numeric"
+								},
+								{
+									"include": "#constant"
+								},
+								{
+									"include": "#array"
+								},
+								{
+									"include": "#map"
+								},
+								{
+									"include": "#string"
+								}
+							]
+						}
+					},
+					"patterns": [
+						{
+							"include": "$self"
+						}
+					]
+				}
+			]
+		},
+		"macro": {
+			"patterns": [
+				{
+					"begin": "([\\w-]+)((\\s[\\w-]+|)|(\\s(\".*\"|\\[.*\\]|\\{.*\\}))|)\\s*\\(",
+					"beginCaptures": {
+						"0": {
+							"name": "entity.name.function.macro",
+							"patterns": [
+								{
+									"include": "$self"
+								},
+								{
+									"include": "#numeric"
+								},
+								{
+									"include": "#constant"
+								},
+								{
+									"include": "#array"
+								},
+								{
+									"include": "#map"
+								},
+								{
+									"include": "#string"
+								}
+							]
+						}
+					},
+					"end": "\\)",
+					"patterns": [
+						{
+							"include": "$self"
+						},
+						{
+							"include": "#param"
+						},
+						{
+							"include": "#attach"
+						},
+						{
+							"include": "#macro"
+						}
+					]
+				}
+			]
+		},
+		"attach": {
+			"patterns": [
+				{
+					"match": "attach ([\\w-]+)",
+					"captures": {
+						"0": {
+							"name": "keyword.control"
+						},
+						"1": {
+							"name": "entity.name.function"
+						}
+					},
+					"patterns": [
+						{
+							"include": "$self"
+						},
+						{
+							"include": "#param"
+						}
+					]
+				}
+			]
+		},
+		"param": {
 			"patterns": [
 				{
 					"begin": "([\\w\\.-]+)\\s*(=)\\s*",
@@ -389,31 +525,28 @@
 					},
 					"patterns": [
 						{
-							"include": "#variable-type-string"
+							"include": "#numeric"
 						},
 						{
-							"include": "#variable-type-hexadecimal"
+							"include": "#constant"
 						},
 						{
-							"include": "#variable-type-decimal"
+							"include": "#array"
 						},
 						{
-							"include": "#variable-type-constant"
-						},
-						{
-							"include": "#variable-type-array"
-						},
-						{
-							"include": "#variable-type-map"
+							"include": "#map"
 						},
 						{
 							"include": "#embedded"
+						},
+						{
+							"include": "#string"
 						}
 					]
 				}
 			]
 		},
-		"variable-interpolation": {
+		"interpolation": {
 			"patterns": [
 				{
 					"begin": "\\$\\{",
@@ -430,32 +563,29 @@
 					},
 					"patterns": [
 						{
-							"include": "#variable-interpolation-function"
+							"include": "#interpolation-function"
 						},
 						{
-							"include": "#variable-interpolation-reference"
+							"include": "#interpolation-reference"
 						}
 					]
 				}
 			]
 		},
-		"variable-type-array": {
+		"array": {
 			"patterns": [
 				{
 					"begin": "\\[",
 					"end": "\\]",
 					"patterns": [
 						{
-							"include": "#variable-type-decimal"
+							"include": "#numeric"
 						},
 						{
-							"include": "#variable-type-hexadecimal"
+							"include": "#constant"
 						},
 						{
-							"include": "#variable-type-constant"
-						},
-						{
-							"include": "#variable-type-string"
+							"include": "#string"
 						},
 						{
 							"match": "\\s*,\\s*"
@@ -464,7 +594,7 @@
 				}
 			]
 		},
-		"variable-type-map": {
+		"map": {
 			"patterns": [
 				{
 					"begin": "\\{",
@@ -488,16 +618,13 @@
 							},
 							"patterns": [
 								{
-									"include": "#variable-type-decimal"
+									"include": "#numeric"
 								},
 								{
-									"include": "#variable-type-hexadecimal"
+									"include": "#constant"
 								},
 								{
-									"include": "#variable-type-constant"
-								},
-								{
-									"include": "#variable-type-string"
+									"include": "#string"
 								},
 								{
 									"match": "\\s*,\\s*"
@@ -508,20 +635,7 @@
 				}
 			]
 		},
-		"variable-type-hexadecimal": {
-			"patterns": [
-				{
-					"comment": "Numbers in hexadecimal with optional suffixes",
-					"match": "0x[0-9A-Fa-f]+([kKmMgG]b?)?",
-					"captures": {
-						"0": {
-							"name": "constant.numeric.co2"
-						}
-					}
-				}
-			]
-		},
-		"variable-type-decimal": {
+		"numeric": {
 			"patterns": [
 				{
 					"comment": "Numbers in decimal with optional suffixes",
@@ -534,7 +648,7 @@
 				}
 			]
 		},
-		"variable-type-constant": {
+		"constant": {
 			"patterns": [
 				{
 					"match": "\\b(true|false)\\b",
@@ -546,25 +660,25 @@
 				}
 			]
 		},
-		"variable-type-string": {
+		"string": {
 			"patterns": [
 				{
 					"comment": "Usual string",
 					"begin": "\"",
 					"beginCaptures": {
 						"0": {
-							"name": "string.quoted.double.co2"
+							"name": "punctuation.definition.string.begin"
 						}
 					},
 					"end": "\"",
 					"endCaptures": {
 						"0": {
-							"name": "string.quoted.double.co2"
+							"name": "punctuation.definition.string.end"
 						}
 					},
 					"patterns": [
 						{
-							"include": "#variable-interpolation"
+							"include": "#interpolation"
 						},
 						{
 							"match": "[^\"]",
