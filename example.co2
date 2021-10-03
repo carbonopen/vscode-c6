@@ -2,37 +2,29 @@ import {
     http (
         souce="target/release/libhttp_server"
     )
-    switch (
-        source="target/release/libswitch"
-    )
-    payload (
-        source="target/release/libpayload"
-    )
-    runtime "node.git"
-    ok
-    other "name" (
-        source=123
+    switch
+    payload
+    runtime "ssh+git@github.com/carbon/runtime.git"
+    log (
+        features=["stdout"]
     )
 }
 
 pipeline {
     http init { // {"use": }
         reutes ( // [{"reutes": [{"path": 123, "method":"GET"},{path},{path}]}]
-            path 123 (
-                method="GET"
+            path "/users" (
                 attach request {
                     url="http://other.api/users"
-                    method="GET"
-                    item=123.23
+                    item=true
                     attach init
                 }
             )
 
             path 123 (
                 status_code="200"
-                body=```js
-                let item = require("asd");
-                return item
+                body=```python
+                import 
                 ```
             )
 

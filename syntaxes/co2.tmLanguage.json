@@ -285,7 +285,7 @@
 					"match": "(//)+(.*)",
 					"captures": {
 						"0": {
-							"name": "comment.line.double-slash.co2"
+							"name": "comment.line.double-slash"
 						}
 					}
 				},
@@ -294,16 +294,16 @@
 					"begin": "/\\*",
 					"beginCaptures": {
 						"0": {
-							"name": "comment.block.documentation.co2"
+							"name": "comment.block.documentation"
 						}
 					},
 					"end": "\\*/",
 					"endCaptures": {
 						"0": {
-							"name": "comment.block.documentation.co2"
+							"name": "comment.block.documentation"
 						}
 					},
-					"contentName": "comment.block.documentation.co2"
+					"contentName": "comment.block.documentation"
 				}
 			]
 		},
@@ -407,21 +407,6 @@
 							"name": "storage.type.struct",
 							"patterns": [
 								{
-									"include": "$self"
-								},
-								{
-									"include": "#numeric"
-								},
-								{
-									"include": "#constant"
-								},
-								{
-									"include": "#array"
-								},
-								{
-									"include": "#map"
-								},
-								{
 									"include": "#string"
 								}
 							]
@@ -438,7 +423,7 @@
 		"macro": {
 			"patterns": [
 				{
-					"begin": "([\\w-]+)((\\s[\\w-]+|)|(\\s(\".*\"|\\[.*\\]|\\{.*\\}))|)\\s*\\(",
+					"begin": "([\\w-]+)\\s*(\\s*([\\w-]+|\".*\"|\\[.*\\]|\\{.*\\})|)*\\s*\\(",
 					"beginCaptures": {
 						"0": {
 							"name": "entity.name.function.macro",
@@ -453,6 +438,9 @@
 									"include": "#constant"
 								},
 								{
+									"include": "#boolean"
+								},
+								{
 									"include": "#array"
 								},
 								{
@@ -460,6 +448,38 @@
 								},
 								{
 									"include": "#string"
+								},
+								{
+									"include": "#interpolation"
+								}
+							]
+						},
+						"1": {
+							"name": "entity.name.function.macro",
+							"patterns": [
+								{
+									"include": "$self"
+								},
+								{
+									"include": "#numeric"
+								},
+								{
+									"include": "#constant"
+								},
+								{
+									"include": "#boolean"
+								},
+								{
+									"include": "#array"
+								},
+								{
+									"include": "#map"
+								},
+								{
+									"include": "#string"
+								},
+								{
+									"include": "#interpolation"
 								}
 							]
 						}
@@ -511,16 +531,16 @@
 					"begin": "([\\w\\.-]+)\\s*(=)\\s*",
 					"beginCaptures": {
 						"1": {
-							"name": "variable.parameter.co2"
+							"name": "variable.parameter"
 						},
 						"2": {
-							"name": "keyword.operator.co2"
+							"name": "keyword.operator"
 						}
 					},
 					"end": "(?<!\\2)$",
 					"endCaptures": {
 						"0": {
-							"name": "keyword.operator.co2"
+							"name": "keyword.operator"
 						}
 					},
 					"patterns": [
@@ -529,6 +549,9 @@
 						},
 						{
 							"include": "#constant"
+						},
+						{
+							"include": "#boolean"
 						},
 						{
 							"include": "#array"
@@ -541,6 +564,9 @@
 						},
 						{
 							"include": "#string"
+						},
+						{
+							"include": "#interpolation"
 						}
 					]
 				}
@@ -552,13 +578,13 @@
 					"begin": "\\$\\{",
 					"beginCaptures": {
 						"0": {
-							"name": "keyword.operator.co2"
+							"name": "keyword.operator"
 						}
 					},
 					"end": "\\}",
 					"endCaptures": {
 						"0": {
-							"name": "keyword.operator.co2"
+							"name": "keyword.operator"
 						}
 					},
 					"patterns": [
@@ -585,6 +611,9 @@
 							"include": "#constant"
 						},
 						{
+							"include": "#boolean"
+						},
+						{
 							"include": "#string"
 						},
 						{
@@ -604,16 +633,16 @@
 							"begin": "(\"[\\w\\s\\.-]+\")\\s*(:)",
 							"beginCaptures": {
 								"1": {
-									"name": "string.quoted.double.co2"
+									"name": "string.quoted.double"
 								},
 								"2": {
-									"name": "keyword.operator.co2"
+									"name": "keyword.operator"
 								}
 							},
 							"end": "(?<!\\2)\\s*($|(?=\\}))",
 							"endCaptures": {
 								"0": {
-									"name": "keyword.operator.co2"
+									"name": "keyword.operator"
 								}
 							},
 							"patterns": [
@@ -622,6 +651,9 @@
 								},
 								{
 									"include": "#constant"
+								},
+								{
+									"include": "#boolean"
 								},
 								{
 									"include": "#string"
@@ -642,19 +674,19 @@
 					"match": "\\b[0-9\\.]+([kKmMgG]b?)?\\b",
 					"captures": {
 						"0": {
-							"name": "constant.numeric.co2"
+							"name": "constant.numeric"
 						}
 					}
 				}
 			]
 		},
-		"constant": {
+		"boolean": {
 			"patterns": [
 				{
 					"match": "\\b(true|false)\\b",
 					"captures": {
 						"0": {
-							"name": "constant.numeric.co2"
+							"name": "constant.language.boolean"
 						}
 					}
 				}
@@ -684,7 +716,7 @@
 							"match": "[^\"]",
 							"captures": {
 								"0": {
-									"name": "string.quoted.double.co2"
+									"name": "string.quoted.double"
 								}
 							}
 						}
