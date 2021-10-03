@@ -1,7 +1,7 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "co2",
-	"scopeName": "co2",
+	"name": "pipe",
+	"scopeName": "pipe",
 	"patterns": [
 		{
 			"include": "#comments"
@@ -11,6 +11,9 @@
 		},
 		{
 			"include": "#import"
+		},
+		{
+			"include": "#vars"
 		}
 	],
 	"repository": {
@@ -21,15 +24,15 @@
 					"end": "```",
 					"beginCaptures": {
 						"0": {
-							"name": "punctuation.code.open"
+							"name": "punctuation.code.open.pipe"
 						}
 					},
 					"endCaptures": {
 						"0": {
-							"name": "punctuation.code.close"
+							"name": "punctuation.code.close.pipe"
 						}
 					},
-					"name": "meta.embedded.block.javascript",
+					"name": "meta.embedded.block.javascript.pipe",
 					"patterns": [
 						{
 							"include": "source.js"
@@ -41,15 +44,15 @@
 					"end": "```",
 					"beginCaptures": {
 						"0": {
-							"name": "punctuation.code.open"
+							"name": "punctuation.code.open.pipe"
 						}
 					},
 					"endCaptures": {
 						"0": {
-							"name": "punctuation.code.close"
+							"name": "punctuation.code.close.pipe"
 						}
 					},
-					"name": "meta.embedded.block.typescript",
+					"name": "meta.embedded.block.typescript.pipe",
 					"patterns": [
 						{
 							"include": "source.ts"
@@ -61,15 +64,15 @@
 					"end": "```",
 					"beginCaptures": {
 						"0": {
-							"name": "punctuation.code.open"
+							"name": "punctuation.code.open.pipe"
 						}
 					},
 					"endCaptures": {
 						"0": {
-							"name": "punctuation.code.close"
+							"name": "punctuation.code.close.pipe"
 						}
 					},
-					"name": "meta.embedded.block.json",
+					"name": "meta.embedded.block.json.pipe",
 					"patterns": [
 						{
 							"include": "source.json"
@@ -81,15 +84,15 @@
 					"end": "```",
 					"beginCaptures": {
 						"0": {
-							"name": "punctuation.code.open"
+							"name": "punctuation.code.open.pipe"
 						}
 					},
 					"endCaptures": {
 						"0": {
-							"name": "punctuation.code.close"
+							"name": "punctuation.code.close.pipe"
 						}
 					},
-					"name": "meta.embedded.block.go",
+					"name": "meta.embedded.block.go.pipe",
 					"patterns": [
 						{
 							"include": "source.go"
@@ -101,15 +104,15 @@
 					"end": "```",
 					"beginCaptures": {
 						"0": {
-							"name": "punctuation.code.open"
+							"name": "punctuation.code.open.pipe"
 						}
 					},
 					"endCaptures": {
 						"0": {
-							"name": "punctuation.code.close"
+							"name": "punctuation.code.close.pipe"
 						}
 					},
-					"name": "meta.embedded.block.yaml",
+					"name": "meta.embedded.block.yaml.pipe",
 					"patterns": [
 						{
 							"include": "source.yaml"
@@ -121,15 +124,15 @@
 					"end": "```",
 					"beginCaptures": {
 						"0": {
-							"name": "punctuation.code.open"
+							"name": "punctuation.code.open.pipe"
 						}
 					},
 					"endCaptures": {
 						"0": {
-							"name": "punctuation.code.close"
+							"name": "punctuation.code.close.pipe"
 						}
 					},
-					"name": "meta.embedded.block.html",
+					"name": "meta.embedded.block.html.pipe",
 					"patterns": [
 						{
 							"include": "text.html.derivative"
@@ -141,15 +144,15 @@
 					"end": "```",
 					"beginCaptures": {
 						"0": {
-							"name": "punctuation.code.open"
+							"name": "punctuation.code.open.pipe"
 						}
 					},
 					"endCaptures": {
 						"0": {
-							"name": "punctuation.code.close"
+							"name": "punctuation.code.close.pipe"
 						}
 					},
-					"name": "meta.embedded.block.html",
+					"name": "meta.embedded.block.html.pipe",
 					"patterns": [
 						{
 							"include": "text.html.markdown"
@@ -161,15 +164,15 @@
 					"end": "```",
 					"beginCaptures": {
 						"0": {
-							"name": "punctuation.code.open"
+							"name": "punctuation.code.open.pipe"
 						}
 					},
 					"endCaptures": {
 						"0": {
-							"name": "punctuation.code.close"
+							"name": "punctuation.code.close.pipe"
 						}
 					},
-					"name": "meta.embedded.block.python",
+					"name": "meta.embedded.block.python.pipe",
 					"patterns": [
 						{
 							"include": "source.python"
@@ -181,15 +184,15 @@
 					"end": "```",
 					"beginCaptures": {
 						"0": {
-							"name": "punctuation.code.open"
+							"name": "punctuation.code.open.pipe"
 						}
 					},
 					"endCaptures": {
 						"0": {
-							"name": "punctuation.code.close"
+							"name": "punctuation.code.close.pipe"
 						}
 					},
-					"name": "meta.embedded.block.rhai",
+					"name": "meta.embedded.block.rhai.pipe",
 					"patterns": [
 						{
 							"include": "source.rhai"
@@ -201,15 +204,15 @@
 					"end": "```",
 					"beginCaptures": {
 						"0": {
-							"name": "punctuation.code.open"
+							"name": "punctuation.code.open.pipe"
 						}
 					},
 					"endCaptures": {
 						"0": {
-							"name": "punctuation.code.close"
+							"name": "punctuation.code.close.pipe"
 						}
 					},
-					"name": "meta.embedded.block.php",
+					"name": "meta.embedded.block.php.pipe",
 					"patterns": [
 						{
 							"include": "source.php"
@@ -221,15 +224,15 @@
 					"end": "```",
 					"beginCaptures": {
 						"0": {
-							"name": "punctuation.code.open"
+							"name": "punctuation.code.open.pipe"
 						}
 					},
 					"endCaptures": {
 						"0": {
-							"name": "punctuation.code.close"
+							"name": "punctuation.code.close.pipe"
 						}
 					},
-					"name": "meta.embedded.block.shell",
+					"name": "meta.embedded.block.shell.pipe",
 					"patterns": [
 						{
 							"include": "source.shell"
@@ -241,15 +244,15 @@
 					"end": "```",
 					"beginCaptures": {
 						"0": {
-							"name": "punctuation.code.open"
+							"name": "punctuation.code.open.pipe"
 						}
 					},
 					"endCaptures": {
 						"0": {
-							"name": "punctuation.code.close"
+							"name": "punctuation.code.close.pipe"
 						}
 					},
-					"name": "meta.embedded.block.xml",
+					"name": "meta.embedded.block.xml.pipe",
 					"patterns": [
 						{
 							"include": "text.xml"
@@ -261,15 +264,15 @@
 					"end": "```",
 					"beginCaptures": {
 						"0": {
-							"name": "punctuation.code.open"
+							"name": "punctuation.code.open.pipe"
 						}
 					},
 					"endCaptures": {
 						"0": {
-							"name": "punctuation.code.close"
+							"name": "punctuation.code.close.pipe"
 						}
 					},
-					"name": "meta.embedded.block.hbs",
+					"name": "meta.embedded.block.hbs.pipe",
 					"patterns": [
 						{
 							"include": "text.html.handlebars"
@@ -285,7 +288,7 @@
 					"match": "(//)+(.*)",
 					"captures": {
 						"0": {
-							"name": "comment.line.double-slash"
+							"name": "comment.line.double-slash.pipe"
 						}
 					}
 				},
@@ -294,16 +297,16 @@
 					"begin": "/\\*",
 					"beginCaptures": {
 						"0": {
-							"name": "comment.block.documentation"
+							"name": "comment.block.documentation.pipe"
 						}
 					},
 					"end": "\\*/",
 					"endCaptures": {
 						"0": {
-							"name": "comment.block.documentation"
+							"name": "comment.block.documentation.pipe"
 						}
 					},
-					"contentName": "comment.block.documentation"
+					"contentName": "comment.block.documentation.pipe"
 				}
 			]
 		},
@@ -313,7 +316,7 @@
 					"begin": "pipeline\\s*\\{",
 					"captures": {
 						"0": {
-							"name": "support.type"
+							"name": "support.type.pipe"
 						}
 					},
 					"end": "\\}",
@@ -334,7 +337,7 @@
 					"begin": "import\\s*\\{",
 					"captures": {
 						"0": {
-							"name": "support.type"
+							"name": "support.type.pipe"
 						}
 					},
 					"end": "\\}",
@@ -349,16 +352,43 @@
 				}
 			]
 		},
+		"vars": {
+			"patterns": [
+				{
+					"begin": "vars\\s*\\{",
+					"captures": {
+						"0": {
+							"name": "support.type.pipe"
+						}
+					},
+					"end": "\\}",
+					"patterns": [
+						{
+							"include": "$self"
+						},
+						{
+							"include": "#param"
+						},
+						{
+							"include": "#embedded"
+						},
+						{
+							"include": "#interpolation"
+						}
+					]
+				}
+			]
+		},
 		"modules": {
 			"patterns": [
 				{
 					"begin": "([\\w-]+)((\\s([\\w-]+))|)\\s*\\{",
 					"beginCaptures": {
 						"0": {
-							"name": "entity.name.function"
+							"name": "entity.name.function.pipe"
 						},
 						"1": {
-							"name": "storage.type.struct"
+							"name": "storage.type.struct.pipe"
 						}
 					},
 					"end": "\\}",
@@ -385,7 +415,7 @@
 					"begin": "([\\w-]+)(\\s\".*\"|)\\s*\\(",
 					"beginCaptures": {
 						"0": {
-							"name": "storage.type.struct",
+							"name": "storage.type.struct.pipe",
 							"patterns": [
 								{
 									"include": "#string"
@@ -404,7 +434,7 @@
 					"match": "([\\w-]+)(\\s\".*\"|)",
 					"captures": {
 						"0": {
-							"name": "storage.type.struct",
+							"name": "storage.type.struct.pipe",
 							"patterns": [
 								{
 									"include": "#string"
@@ -426,7 +456,7 @@
 					"begin": "([\\w-]+)\\s*(\\s*([\\w-]+|\".*\"|\\[.*\\]|\\{.*\\})|)*\\s*\\(",
 					"beginCaptures": {
 						"0": {
-							"name": "entity.name.function.macro",
+							"name": "entity.name.function.macro.pipe",
 							"patterns": [
 								{
 									"include": "$self"
@@ -455,7 +485,7 @@
 							]
 						},
 						"1": {
-							"name": "entity.name.function.macro",
+							"name": "entity.name.function.macro.pipe",
 							"patterns": [
 								{
 									"include": "$self"
@@ -508,10 +538,10 @@
 					"match": "attach ([\\w-]+)",
 					"captures": {
 						"0": {
-							"name": "keyword.control"
+							"name": "keyword.control.pipe"
 						},
 						"1": {
-							"name": "entity.name.function"
+							"name": "entity.name.function.pipe"
 						}
 					},
 					"patterns": [
@@ -531,16 +561,16 @@
 					"begin": "([\\w\\.-]+)\\s*(=)\\s*",
 					"beginCaptures": {
 						"1": {
-							"name": "variable.parameter"
+							"name": "variable.parameter.pipe"
 						},
 						"2": {
-							"name": "keyword.operator"
+							"name": "keyword.operator.pipe"
 						}
 					},
 					"end": "(?<!\\2)$",
 					"endCaptures": {
 						"0": {
-							"name": "keyword.operator"
+							"name": "keyword.operator.pipe"
 						}
 					},
 					"patterns": [
@@ -578,13 +608,13 @@
 					"begin": "\\$\\{",
 					"beginCaptures": {
 						"0": {
-							"name": "keyword.operator"
+							"name": "keyword.operator.pipe"
 						}
 					},
 					"end": "\\}",
 					"endCaptures": {
 						"0": {
-							"name": "keyword.operator"
+							"name": "keyword.operator.pipe"
 						}
 					},
 					"patterns": [
@@ -633,16 +663,16 @@
 							"begin": "(\"[\\w\\s\\.-]+\")\\s*(:)",
 							"beginCaptures": {
 								"1": {
-									"name": "string.quoted.double"
+									"name": "string.quoted.double.pipe"
 								},
 								"2": {
-									"name": "keyword.operator"
+									"name": "keyword.operator.pipe"
 								}
 							},
 							"end": "(?<!\\2)\\s*($|(?=\\}))",
 							"endCaptures": {
 								"0": {
-									"name": "keyword.operator"
+									"name": "keyword.operator.pipe"
 								}
 							},
 							"patterns": [
@@ -674,7 +704,7 @@
 					"match": "\\b[0-9\\.]+([kKmMgG]b?)?\\b",
 					"captures": {
 						"0": {
-							"name": "constant.numeric"
+							"name": "constant.numeric.pipe"
 						}
 					}
 				}
@@ -686,7 +716,7 @@
 					"match": "\\b(true|false)\\b",
 					"captures": {
 						"0": {
-							"name": "constant.language.boolean"
+							"name": "constant.language.boolean.pipe"
 						}
 					}
 				}
@@ -699,13 +729,13 @@
 					"begin": "\"",
 					"beginCaptures": {
 						"0": {
-							"name": "punctuation.definition.string.begin"
+							"name": "punctuation.definition.string.begin.pipe"
 						}
 					},
 					"end": "\"",
 					"endCaptures": {
 						"0": {
-							"name": "punctuation.definition.string.end"
+							"name": "punctuation.definition.string.end.pipe"
 						}
 					},
 					"patterns": [
@@ -716,7 +746,7 @@
 							"match": "[^\"]",
 							"captures": {
 								"0": {
-									"name": "string.quoted.double"
+									"name": "string.quoted.double.pipe"
 								}
 							}
 						}

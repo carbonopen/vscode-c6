@@ -10,10 +10,18 @@ import {
     )
 }
 
+vars {
+    port=${ env['PORT'] }
+    project_name="Pipe Project"
+    my_ip=```shell
+        ifconfig | grep -E "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -v '[127.0|172.17].0.1' | awk '{ print $2 }' | cut -f2 -d: | head -n1
+    ```
+}
+
 pipeline {
     http init { // {"use": }
-        reutes ( // [{"reutes": [{"path": 123, "method":"GET"},{path},{path}]}]
-            path "/users" (
+        reutes ( // [{"reutes": [{"get": "/users", "method":"GET"},{path},{path}]}]
+            get "/users" (
                 attach request {
                     url="http://other.api/users"
                     item=true
@@ -21,30 +29,31 @@ pipeline {
                 }
             )
 
-            path 123 (
+            post [123] (
                 status_code="200"
                 body=```python
                 import 
                 ```
             )
 
-            path "/users" (
-                method="GET"
+            post "/users" (
                 attach request {
                     url="http://other.api/users"
                     method="GET"
-                    ok= ${ variable.existe }
+                    payload= {
+                        "username": ${ body.first_name + body.init }
+                    }
                     attach init
                 }
             )
-            // Comment 2
-            path {"item": true} (
+
+            put {"item": true} (
                 method=POST
                 attach db_save
             )
-            // Comment 2
+
             path [true, 123] (
-                method=POST
+                method="POST"
                 attach db_save
             )
         )

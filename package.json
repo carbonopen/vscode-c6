@@ -1,7 +1,7 @@
 {
-    "name": "co2",
-    "displayName": "co2",
-    "description": "Co2 support language",
+    "name": "pipe",
+    "displayName": "pipe",
+    "description": "pipe support language",
     "version": "0.0.1",
     "engines": {
         "vscode": "^1.60.0"
@@ -12,22 +12,22 @@
     "contributes": {
         "languages": [
             {
-                "id": "co2",
+                "id": "pipe",
                 "aliases": [
-                    "co2",
-                    "co2"
+                    "pipe",
+                    "pipe"
                 ],
                 "extensions": [
-                    "co2"
+                    "pipe"
                 ],
                 "configuration": "./language-configuration.json"
             }
         ],
         "grammars": [
             {
-                "language": "co2",
-                "scopeName": "co2",
-                "path": "./syntaxes/co2.tmLanguage.json"
+                "language": "pipe",
+                "scopeName": "pipe",
+                "path": "./syntaxes/pipe.tmLanguage.json"
             }
         ]
     }
