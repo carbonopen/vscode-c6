@@ -1,7 +1,7 @@
 {
-    "name": "pipe",
-    "displayName": "pipe",
-    "description": "pipe support language",
+    "name": "carbon-pipeline",
+    "displayName": "Carbon Pipeline",
+    "description": "Carbon Pipeline support language",
     "version": "0.0.1",
     "engines": {
         "vscode": "^1.60.0"
@@ -12,22 +12,24 @@
     "contributes": {
         "languages": [
             {
-                "id": "pipe",
+                "id": "carbon-pipeline",
                 "aliases": [
-                    "pipe",
-                    "pipe"
+                    "Carbon Pipeline",
+                    "Carbon",
+                    "c6",
+                    "Pipeline"
                 ],
                 "extensions": [
-                    "pipe"
+                    "c6"
                 ],
                 "configuration": "./language-configuration.json"
             }
         ],
         "grammars": [
             {
-                "language": "pipe",
-                "scopeName": "pipe",
-                "path": "./syntaxes/pipe.tmLanguage.json"
+                "language": "carbon-pipeline",
+                "scopeName": "source.c6",
+                "path": "./syntaxes/carbon.tmLanguage.json"
             }
         ]
     }

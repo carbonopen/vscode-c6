@@ -1,7 +1,7 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "pipe",
-	"scopeName": "pipe",
+	"name": "carbon-pipeline",
+	"scopeName": "source.c6",
 	"patterns": [
 		{
 			"include": "#comments"
@@ -14,6 +14,9 @@
 		},
 		{
 			"include": "#vars"
+		},
+		{
+			"include": "#config"
 		}
 	],
 	"repository": {
@@ -24,15 +27,15 @@
 					"end": "```",
 					"beginCaptures": {
 						"0": {
-							"name": "punctuation.code.open.pipe"
+							"name": "punctuation.code.open.c6"
 						}
 					},
 					"endCaptures": {
 						"0": {
-							"name": "punctuation.code.close.pipe"
+							"name": "punctuation.code.close.c6"
 						}
 					},
-					"name": "meta.embedded.block.javascript.pipe",
+					"name": "meta.embedded.block.javascript.c6",
 					"patterns": [
 						{
 							"include": "source.js"
@@ -44,15 +47,15 @@
 					"end": "```",
 					"beginCaptures": {
 						"0": {
-							"name": "punctuation.code.open.pipe"
+							"name": "punctuation.code.open.c6"
 						}
 					},
 					"endCaptures": {
 						"0": {
-							"name": "punctuation.code.close.pipe"
+							"name": "punctuation.code.close.c6"
 						}
 					},
-					"name": "meta.embedded.block.typescript.pipe",
+					"name": "meta.embedded.block.typescript.c6",
 					"patterns": [
 						{
 							"include": "source.ts"
@@ -64,15 +67,15 @@
 					"end": "```",
 					"beginCaptures": {
 						"0": {
-							"name": "punctuation.code.open.pipe"
+							"name": "punctuation.code.open.c6"
 						}
 					},
 					"endCaptures": {
 						"0": {
-							"name": "punctuation.code.close.pipe"
+							"name": "punctuation.code.close.c6"
 						}
 					},
-					"name": "meta.embedded.block.json.pipe",
+					"name": "meta.embedded.block.json.c6",
 					"patterns": [
 						{
 							"include": "source.json"
@@ -84,15 +87,15 @@
 					"end": "```",
 					"beginCaptures": {
 						"0": {
-							"name": "punctuation.code.open.pipe"
+							"name": "punctuation.code.open.c6"
 						}
 					},
 					"endCaptures": {
 						"0": {
-							"name": "punctuation.code.close.pipe"
+							"name": "punctuation.code.close.c6"
 						}
 					},
-					"name": "meta.embedded.block.go.pipe",
+					"name": "meta.embedded.block.go.c6",
 					"patterns": [
 						{
 							"include": "source.go"
@@ -104,15 +107,15 @@
 					"end": "```",
 					"beginCaptures": {
 						"0": {
-							"name": "punctuation.code.open.pipe"
+							"name": "punctuation.code.open.c6"
 						}
 					},
 					"endCaptures": {
 						"0": {
-							"name": "punctuation.code.close.pipe"
+							"name": "punctuation.code.close.c6"
 						}
 					},
-					"name": "meta.embedded.block.yaml.pipe",
+					"name": "meta.embedded.block.yaml.c6",
 					"patterns": [
 						{
 							"include": "source.yaml"
@@ -124,15 +127,15 @@
 					"end": "```",
 					"beginCaptures": {
 						"0": {
-							"name": "punctuation.code.open.pipe"
+							"name": "punctuation.code.open.c6"
 						}
 					},
 					"endCaptures": {
 						"0": {
-							"name": "punctuation.code.close.pipe"
+							"name": "punctuation.code.close.c6"
 						}
 					},
-					"name": "meta.embedded.block.html.pipe",
+					"name": "meta.embedded.block.html.c6",
 					"patterns": [
 						{
 							"include": "text.html.derivative"
@@ -144,15 +147,15 @@
 					"end": "```",
 					"beginCaptures": {
 						"0": {
-							"name": "punctuation.code.open.pipe"
+							"name": "punctuation.code.open.c6"
 						}
 					},
 					"endCaptures": {
 						"0": {
-							"name": "punctuation.code.close.pipe"
+							"name": "punctuation.code.close.c6"
 						}
 					},
-					"name": "meta.embedded.block.html.pipe",
+					"name": "meta.embedded.block.html.c6",
 					"patterns": [
 						{
 							"include": "text.html.markdown"
@@ -164,15 +167,15 @@
 					"end": "```",
 					"beginCaptures": {
 						"0": {
-							"name": "punctuation.code.open.pipe"
+							"name": "punctuation.code.open.c6"
 						}
 					},
 					"endCaptures": {
 						"0": {
-							"name": "punctuation.code.close.pipe"
+							"name": "punctuation.code.close.c6"
 						}
 					},
-					"name": "meta.embedded.block.python.pipe",
+					"name": "meta.embedded.block.python.c6",
 					"patterns": [
 						{
 							"include": "source.python"
@@ -180,19 +183,19 @@
 					]
 				},
 				{
-					"begin": "```rhai\n",
+					"begin": "(```rhai|```)\n",
 					"end": "```",
 					"beginCaptures": {
 						"0": {
-							"name": "punctuation.code.open.pipe"
+							"name": "punctuation.code.open.c6"
 						}
 					},
 					"endCaptures": {
 						"0": {
-							"name": "punctuation.code.close.pipe"
+							"name": "punctuation.code.close.c6"
 						}
 					},
-					"name": "meta.embedded.block.rhai.pipe",
+					"name": "meta.embedded.block.rhai.c6",
 					"patterns": [
 						{
 							"include": "source.rhai"
@@ -204,15 +207,15 @@
 					"end": "```",
 					"beginCaptures": {
 						"0": {
-							"name": "punctuation.code.open.pipe"
+							"name": "punctuation.code.open.c6"
 						}
 					},
 					"endCaptures": {
 						"0": {
-							"name": "punctuation.code.close.pipe"
+							"name": "punctuation.code.close.c6"
 						}
 					},
-					"name": "meta.embedded.block.php.pipe",
+					"name": "meta.embedded.block.php.c6",
 					"patterns": [
 						{
 							"include": "source.php"
@@ -224,15 +227,15 @@
 					"end": "```",
 					"beginCaptures": {
 						"0": {
-							"name": "punctuation.code.open.pipe"
+							"name": "punctuation.code.open.c6"
 						}
 					},
 					"endCaptures": {
 						"0": {
-							"name": "punctuation.code.close.pipe"
+							"name": "punctuation.code.close.c6"
 						}
 					},
-					"name": "meta.embedded.block.shell.pipe",
+					"name": "meta.embedded.block.shell.c6",
 					"patterns": [
 						{
 							"include": "source.shell"
@@ -244,15 +247,15 @@
 					"end": "```",
 					"beginCaptures": {
 						"0": {
-							"name": "punctuation.code.open.pipe"
+							"name": "punctuation.code.open.c6"
 						}
 					},
 					"endCaptures": {
 						"0": {
-							"name": "punctuation.code.close.pipe"
+							"name": "punctuation.code.close.c6"
 						}
 					},
-					"name": "meta.embedded.block.xml.pipe",
+					"name": "meta.embedded.block.xml.c6",
 					"patterns": [
 						{
 							"include": "text.xml"
@@ -260,19 +263,19 @@
 					]
 				},
 				{
-					"begin": "(```hbs|```)\n",
+					"begin": "```hbs\n",
 					"end": "```",
 					"beginCaptures": {
 						"0": {
-							"name": "punctuation.code.open.pipe"
+							"name": "punctuation.code.open.c6"
 						}
 					},
 					"endCaptures": {
 						"0": {
-							"name": "punctuation.code.close.pipe"
+							"name": "punctuation.code.close.c6"
 						}
 					},
-					"name": "meta.embedded.block.hbs.pipe",
+					"name": "meta.embedded.block.hbs.c6",
 					"patterns": [
 						{
 							"include": "text.html.handlebars"
@@ -288,7 +291,7 @@
 					"match": "(//)+(.*)",
 					"captures": {
 						"0": {
-							"name": "comment.line.double-slash.pipe"
+							"name": "comment.line.double-slash.c6"
 						}
 					}
 				},
@@ -297,16 +300,16 @@
 					"begin": "/\\*",
 					"beginCaptures": {
 						"0": {
-							"name": "comment.block.documentation.pipe"
+							"name": "comment.block.documentation.c6"
 						}
 					},
 					"end": "\\*/",
 					"endCaptures": {
 						"0": {
-							"name": "comment.block.documentation.pipe"
+							"name": "comment.block.documentation.c6"
 						}
 					},
-					"contentName": "comment.block.documentation.pipe"
+					"contentName": "comment.block.documentation.c6"
 				}
 			]
 		},
@@ -316,7 +319,7 @@
 					"begin": "pipeline\\s*\\{",
 					"captures": {
 						"0": {
-							"name": "support.type.pipe"
+							"name": "support.type.c6"
 						}
 					},
 					"end": "\\}",
@@ -326,6 +329,9 @@
 						},
 						{
 							"include": "#modules"
+						},
+						{
+							"include": "#interpolation"
 						}
 					]
 				}
@@ -337,7 +343,7 @@
 					"begin": "import\\s*\\{",
 					"captures": {
 						"0": {
-							"name": "support.type.pipe"
+							"name": "support.type.c6"
 						}
 					},
 					"end": "\\}",
@@ -358,7 +364,7 @@
 					"begin": "vars\\s*\\{",
 					"captures": {
 						"0": {
-							"name": "support.type.pipe"
+							"name": "support.type.c6"
 						}
 					},
 					"end": "\\}",
@@ -379,16 +385,46 @@
 				}
 			]
 		},
+		"config": {
+			"patterns": [
+				{
+					"begin": "config\\s*\\{",
+					"captures": {
+						"0": {
+							"name": "support.type.c6"
+						}
+					},
+					"end": "\\}",
+					"patterns": [
+						{
+							"include": "$self"
+						},
+						{
+							"include": "#param"
+						},
+						{
+							"include": "#embedded"
+						},
+						{
+							"include": "#interpolation"
+						},
+						{
+							"include": "#macro"
+						}
+					]
+				}
+			]
+		},
 		"modules": {
 			"patterns": [
 				{
 					"begin": "([\\w-]+)((\\s([\\w-]+))|)\\s*\\{",
 					"beginCaptures": {
 						"0": {
-							"name": "entity.name.function.pipe"
+							"name": "entity.name.function.c6"
 						},
 						"1": {
-							"name": "storage.type.struct.pipe"
+							"name": "storage.type.struct.c6"
 						}
 					},
 					"end": "\\}",
@@ -404,6 +440,9 @@
 						},
 						{
 							"include": "#param"
+						},
+						{
+							"include": "#interpolation"
 						}
 					]
 				}
@@ -415,7 +454,7 @@
 					"begin": "([\\w-]+)(\\s\".*\"|)\\s*\\(",
 					"beginCaptures": {
 						"0": {
-							"name": "storage.type.struct.pipe",
+							"name": "storage.type.struct.c6",
 							"patterns": [
 								{
 									"include": "#string"
@@ -434,7 +473,7 @@
 					"match": "([\\w-]+)(\\s\".*\"|)",
 					"captures": {
 						"0": {
-							"name": "storage.type.struct.pipe",
+							"name": "storage.type.struct.c6",
 							"patterns": [
 								{
 									"include": "#string"
@@ -453,10 +492,10 @@
 		"macro": {
 			"patterns": [
 				{
-					"begin": "([\\w-]+)\\s*(\\s*([\\w-]+|\".*\"|\\[.*\\]|\\{.*\\})|)*\\s*\\(",
+					"begin": "([\\w-]+)\\s*(\\s*([\\w-]+|\".*\"|\\[.*\\]|\\{.*\\}|\\$\\{.*\\})|)*\\s*\\(",
 					"beginCaptures": {
 						"0": {
-							"name": "entity.name.function.macro.pipe",
+							"name": "entity.name.function.macro.c6",
 							"patterns": [
 								{
 									"include": "$self"
@@ -485,33 +524,7 @@
 							]
 						},
 						"1": {
-							"name": "entity.name.function.macro.pipe",
-							"patterns": [
-								{
-									"include": "$self"
-								},
-								{
-									"include": "#numeric"
-								},
-								{
-									"include": "#constant"
-								},
-								{
-									"include": "#boolean"
-								},
-								{
-									"include": "#array"
-								},
-								{
-									"include": "#map"
-								},
-								{
-									"include": "#string"
-								},
-								{
-									"include": "#interpolation"
-								}
-							]
+							"name": "entity.name.function.macro.c6"
 						}
 					},
 					"end": "\\)",
@@ -538,10 +551,10 @@
 					"match": "attach ([\\w-]+)",
 					"captures": {
 						"0": {
-							"name": "keyword.control.pipe"
+							"name": "keyword.control.c6"
 						},
 						"1": {
-							"name": "entity.name.function.pipe"
+							"name": "entity.name.function.c6"
 						}
 					},
 					"patterns": [
@@ -561,16 +574,16 @@
 					"begin": "([\\w\\.-]+)\\s*(=)\\s*",
 					"beginCaptures": {
 						"1": {
-							"name": "variable.parameter.pipe"
+							"name": "variable.parameter.c6"
 						},
 						"2": {
-							"name": "keyword.operator.pipe"
+							"name": "keyword.operator.c6"
 						}
 					},
 					"end": "(?<!\\2)$",
 					"endCaptures": {
 						"0": {
-							"name": "keyword.operator.pipe"
+							"name": "keyword.operator.c6"
 						}
 					},
 					"patterns": [
@@ -608,21 +621,18 @@
 					"begin": "\\$\\{",
 					"beginCaptures": {
 						"0": {
-							"name": "keyword.operator.pipe"
+							"name": "keyword.operator.c6"
 						}
 					},
 					"end": "\\}",
 					"endCaptures": {
 						"0": {
-							"name": "keyword.operator.pipe"
+							"name": "keyword.operator.c6"
 						}
 					},
 					"patterns": [
 						{
-							"include": "#interpolation-function"
-						},
-						{
-							"include": "#interpolation-reference"
+							"include": "source.rhai"
 						}
 					]
 				}
@@ -647,7 +657,7 @@
 							"include": "#string"
 						},
 						{
-							"match": "\\s*,\\s*"
+							"include": "#interpolation"
 						}
 					]
 				}
@@ -663,16 +673,16 @@
 							"begin": "(\"[\\w\\s\\.-]+\")\\s*(:)",
 							"beginCaptures": {
 								"1": {
-									"name": "string.quoted.double.pipe"
+									"name": "string.quoted.double.c6"
 								},
 								"2": {
-									"name": "keyword.operator.pipe"
+									"name": "keyword.operator.c6"
 								}
 							},
 							"end": "(?<!\\2)\\s*($|(?=\\}))",
 							"endCaptures": {
 								"0": {
-									"name": "keyword.operator.pipe"
+									"name": "keyword.operator.c6"
 								}
 							},
 							"patterns": [
@@ -689,7 +699,7 @@
 									"include": "#string"
 								},
 								{
-									"match": "\\s*,\\s*"
+									"include": "#interpolation"
 								}
 							]
 						}
@@ -704,7 +714,7 @@
 					"match": "\\b[0-9\\.]+([kKmMgG]b?)?\\b",
 					"captures": {
 						"0": {
-							"name": "constant.numeric.pipe"
+							"name": "constant.numeric.c6"
 						}
 					}
 				}
@@ -716,7 +726,7 @@
 					"match": "\\b(true|false)\\b",
 					"captures": {
 						"0": {
-							"name": "constant.language.boolean.pipe"
+							"name": "constant.language.boolean.c6"
 						}
 					}
 				}
@@ -729,13 +739,13 @@
 					"begin": "\"",
 					"beginCaptures": {
 						"0": {
-							"name": "punctuation.definition.string.begin.pipe"
+							"name": "punctuation.definition.string.begin.c6"
 						}
 					},
 					"end": "\"",
 					"endCaptures": {
 						"0": {
-							"name": "punctuation.definition.string.end.pipe"
+							"name": "punctuation.definition.string.end.c6"
 						}
 					},
 					"patterns": [
@@ -746,7 +756,7 @@
 							"match": "[^\"]",
 							"captures": {
 								"0": {
-									"name": "string.quoted.double.pipe"
+									"name": "string.quoted.double.c6"
 								}
 							}
 						}
