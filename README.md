@@ -1,4 +1,4 @@
-# carbon README
+# Carbon Pipeline
 
 This is the README for your extension "carbon". After writing up a brief description, we recommend including the following sections.
 
