@@ -4,9 +4,6 @@
 	"scopeName": "source.c6",
 	"patterns": [
 		{
-			"include": "#comments"
-		},
-		{
 			"include": "#pipeline"
 		},
 		{
@@ -17,6 +14,9 @@
 		},
 		{
 			"include": "#config"
+		},
+		{
+			"include": "#comments"
 		}
 	],
 	"repository": {
@@ -288,7 +288,7 @@
 			"patterns": [
 				{
 					"comment": "Single line comments with double-slash",
-					"match": "(//)+(.*)",
+					"match": "(\/\/)+.*",
 					"captures": {
 						"0": {
 							"name": "comment.line.double-slash.c6"
@@ -343,7 +343,7 @@
 					"begin": "import\\s*\\{",
 					"captures": {
 						"0": {
-							"name": "support.type.c6"
+							"name": "support.type.c6.import"
 						}
 					},
 					"end": "\\}",
@@ -352,7 +352,10 @@
 							"include": "$self"
 						},
 						{
-							"include": "#modules_import"
+							"include": "#macro"
+						},
+						{
+							"include": "#param"
 						}
 					]
 				}
@@ -376,10 +379,10 @@
 							"include": "#param"
 						},
 						{
-							"include": "#embedded"
+							"include": "#interpolation"
 						},
 						{
-							"include": "#interpolation"
+							"include": "#macro"
 						}
 					]
 				}
@@ -448,58 +451,14 @@
 				}
 			]
 		},
-		"modules_import": {
-			"patterns": [
-				{
-					"begin": "([\\w-]+)(\\s\".*\"|)\\s*\\(",
-					"beginCaptures": {
-						"0": {
-							"name": "storage.type.struct.c6",
-							"patterns": [
-								{
-									"include": "#string"
-								}
-							]
-						}
-					},
-					"end": "\\)",
-					"patterns": [
-						{
-							"include": "#param"
-						}
-					]
-				},
-				{
-					"match": "([\\w-]+)(\\s\".*\"|)",
-					"captures": {
-						"0": {
-							"name": "storage.type.struct.c6",
-							"patterns": [
-								{
-									"include": "#string"
-								}
-							]
-						}
-					},
-					"patterns": [
-						{
-							"include": "$self"
-						}
-					]
-				}
-			]
-		},
 		"macro": {
 			"patterns": [
 				{
-					"begin": "([\\w-]+)\\s*(\\s*([\\w-]+|\".*\"|\\[.*\\]|\\{.*\\}|\\$\\{.*\\})|)*\\s*\\(",
+					"begin": "([\\w-]+)\\s*(\\s*(true|false|[0-9.]|\".*\"|\\[.*\\]|\\{.*\\}|\\$\\{.*\\})|)*\\s*\\(",
 					"beginCaptures": {
 						"0": {
 							"name": "entity.name.function.macro.c6",
 							"patterns": [
-								{
-									"include": "$self"
-								},
 								{
 									"include": "#numeric"
 								},
@@ -520,6 +479,9 @@
 								},
 								{
 									"include": "#interpolation"
+								},
+								{
+									"include": "#string_interpolation"
 								}
 							]
 						},
@@ -610,6 +572,9 @@
 						},
 						{
 							"include": "#interpolation"
+						},
+						{
+							"include": "#string_interpolation"
 						}
 					]
 				}
@@ -658,6 +623,15 @@
 						},
 						{
 							"include": "#interpolation"
+						},
+						{
+							"include": "#map"
+						},
+						{
+							"include": "$self"
+						},
+						{
+							"include": "#string_interpolation"
 						}
 					]
 				}
@@ -700,6 +674,15 @@
 								},
 								{
 									"include": "#interpolation"
+								},
+								{
+									"include": "#array"
+								},
+								{
+									"include": "$self"
+								},
+								{
+									"include": "#string_interpolation"
 								}
 							]
 						}
@@ -750,10 +733,39 @@
 					},
 					"patterns": [
 						{
+							"match": "[^\"]",
+							"captures": {
+								"0": {
+									"name": "string.quoted.double.c6"
+								}
+							}
+						}
+					]
+				}
+			]
+		},
+		"string_interpolation": {
+			"patterns": [
+				{
+					"comment": "String with interpolation",
+					"begin": "`",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.begin.c6"
+						}
+					},
+					"end": "`",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.end.c6"
+						}
+					},
+					"patterns": [
+						{
 							"include": "#interpolation"
 						},
 						{
-							"match": "[^\"]",
+							"match": "[^`]",
 							"captures": {
 								"0": {
 									"name": "string.quoted.double.c6"

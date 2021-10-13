@@ -1,31 +1,49 @@
+
 import {
-    http (
-        souce="target/release/libhttp_server"
+    setup (
+        git_url=`git@github.com/${git}.git`
     )
-    switch
-    handler
-    payload
+
+    item=[
+        {
+            "result":  0
+        },
+        {
+            "result":  1
+        }
+    ]
+
+    item (
+        result=0
+    )
+
     runtime (
-        javascript="node"
-        shell="usr/bin/bash"
+        result=1
     )
-    log "ssh+git@github.com/carbon/log.git"
+
+
+    result=[
+        {
+            "result":  [0, true, {"float": 2.1}, [123]]
+        },
+        {
+            "result":  1
+        }
+    ]
+
+    result true {"float": 2.1} [123] ()
+    result 1 ()
+
+    git "c6hub/http" (
+        name=""
+    )
 }
 
 vars {
     port=${ env['PORT'] }
     project_name="carbon Project"
-    my_ip=```shell
-        ifconfig | grep -E "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -v '[127.0|172.17].0.1' | awk '{ print $2 }' | cut -f2 -d: | head -n1
-    ```
 }
 
-config {
-    runtime (
-        javascript="/usr/bin/node"
-        shell="usr/bin/bash"
-    )
-}
 
 pipeline {
     handler {

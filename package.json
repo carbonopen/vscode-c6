@@ -3,6 +3,7 @@
     "displayName": "Carbon Pipeline",
     "description": "Carbon Pipeline support language",
     "version": "0.0.1",
+    "icon": "icon.png",
     "engines": {
         "vscode": "^1.60.0"
     },
