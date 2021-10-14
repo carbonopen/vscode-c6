@@ -510,7 +510,7 @@
 		"attach": {
 			"patterns": [
 				{
-					"begin": "attach ([\\w-]+) {",
+					"begin": "attach\\s([\\w-]+)((\\s([\\w-]+))|)\\s*\\{",
 					"end": "}",
 					"beginCaptures": {
 						"0": {
@@ -518,6 +518,9 @@
 						},
 						"1": {
 							"name": "storage.type.struct.pipe"
+						},
+						"2": {
+							"name": "entity.name.function.pipe"
 						}
 					},
 					"patterns": [
@@ -525,18 +528,59 @@
 							"include": "$self"
 						},
 						{
+							"include": "#macro"
+						},
+						{
+							"include": "#attach"
+						},
+						{
 							"include": "#param"
+						},
+						{
+							"include": "#interpolation"
 						}
 					]
 				},
 				{
-					"match": "attach ([\\w-]+)",
+					"match": "attach\\s([\\w-]+)",
 					"captures": {
 						"0": {
 							"name": "keyword.control.pipe"
 						},
 						"1": {
 							"name": "entity.name.function.pipe"
+						}
+					},
+					"patterns": [
+						{
+							"include": "$self"
+						}
+					]
+				},
+				{
+					"match": "attach\\s([\\w-]+)",
+					"captures": {
+						"0": {
+							"name": "keyword.control.pipe"
+						},
+						"1": {
+							"name": "entity.name.function.pipe"
+						}
+					},
+					"patterns": [
+						{
+							"include": "$self"
+						}
+					]
+				},
+				{
+					"match": "attach ([@][\\w-]+)",
+					"captures": {
+						"0": {
+							"name": "keyword.control.pipe"
+						},
+						"1": {
+							"name": "variable.language.self.pipe"
 						}
 					},
 					"patterns": [
@@ -553,7 +597,7 @@
 					"begin": "([\\w\\.-]+)\\s*(=)\\s*",
 					"beginCaptures": {
 						"1": {
-							"name": "variable.parameter.pipe"
+							"name": "variable.other.property.pipe"
 						},
 						"2": {
 							"name": "keyword.operator.pipe"
