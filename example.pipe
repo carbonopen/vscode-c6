@@ -34,14 +34,14 @@ import {
     result true {"float": 2.1} [123] ()
     result 1 ()
 
-    git "c6hub/http" (
+    git "pipehub/http" (
         name=""
     )
 }
 
 vars {
     port=${ env['PORT'] }
-    project_name="carbon Project"
+    project_name="pipe Project"
 }
 
 
