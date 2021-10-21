@@ -510,17 +510,17 @@
 		"attach": {
 			"patterns": [
 				{
-					"begin": "attach\\s([\\w-]+)((\\s([\\w-]+))|)\\s*\\{",
+					"begin": "([|]|pipe)\\s*([\\w-]+)((\\s*([\\w-]+))|)\\s*\\{",
 					"end": "}",
 					"beginCaptures": {
 						"0": {
-							"name": "keyword.control.pipe"
+							"name": "entity.name.function.pipe"
 						},
 						"1": {
-							"name": "storage.type.struct.pipe"
+							"name": "keyword.control.pipe"
 						},
 						"2": {
-							"name": "entity.name.function.pipe"
+							"name": "storage.type.struct.pipe"
 						}
 					},
 					"patterns": [
@@ -542,12 +542,12 @@
 					]
 				},
 				{
-					"match": "attach\\s([\\w-]+)",
+					"match": "([|]|pipe)\\s*([\\w-]+)",
 					"captures": {
-						"0": {
+						"1": {
 							"name": "keyword.control.pipe"
 						},
-						"1": {
+						"0": {
 							"name": "entity.name.function.pipe"
 						}
 					},
@@ -558,12 +558,12 @@
 					]
 				},
 				{
-					"match": "attach\\s([\\w-]+)",
+					"match": "([|]|pipe)\\s*([\\w-]+)",
 					"captures": {
-						"0": {
+						"1": {
 							"name": "keyword.control.pipe"
 						},
-						"1": {
+						"0": {
 							"name": "entity.name.function.pipe"
 						}
 					},
@@ -574,12 +574,12 @@
 					]
 				},
 				{
-					"match": "attach ([@][\\w-]+)",
+					"match": "([|]|pipe)\\s*([@][\\w-]+)",
 					"captures": {
-						"0": {
+						"1": {
 							"name": "keyword.control.pipe"
 						},
-						"1": {
+						"0": {
 							"name": "variable.language.self.pipe"
 						}
 					},
