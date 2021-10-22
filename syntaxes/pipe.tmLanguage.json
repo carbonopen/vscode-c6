@@ -316,7 +316,39 @@
 		"pipeline": {
 			"patterns": [
 				{
-					"begin": "pipeline\\s*\\{",
+					"begin": "pipe \\s*([\\w-]+)((\\s([\\w-]+))|)\\s*\\{",
+					"captures": {
+						"0": {
+							"name": "support.type.pipe"
+						},
+						"2": {
+							"name": "entity.name.function.pipe"
+						},
+						"1": {
+							"name": "storage.type.struct.pipe"
+						}
+					},
+					"end": "\\}",
+					"patterns": [
+						{
+							"include": "$self"
+						},
+						{
+							"include": "#macro"
+						},
+						{
+							"include": "#attach"
+						},
+						{
+							"include": "#param"
+						},
+						{
+							"include": "#interpolation"
+						}
+					]
+				},
+				{
+					"begin": "pipe \\s*\\{",
 					"captures": {
 						"0": {
 							"name": "support.type.pipe"
@@ -340,7 +372,59 @@
 		"import": {
 			"patterns": [
 				{
-					"begin": "import\\s*\\{",
+					"begin": "(import) \\s*(([\\w-]+)\\s*(\\s*(true|false|[0-9.]|\".*\"|\\[.*\\]|\\{.*\\}|\\$\\{.*\\})|)*\\s*)\\(",
+					"beginCaptures": {
+						"1": {
+							"name": "support.type.pipe.import"
+						},
+						"2": {
+							"name": "entity.name.function.macro.pipe",
+							"patterns": [
+								{
+									"include": "#numeric"
+								},
+								{
+									"include": "#constant"
+								},
+								{
+									"include": "#boolean"
+								},
+								{
+									"include": "#array"
+								},
+								{
+									"include": "#map"
+								},
+								{
+									"include": "#string"
+								},
+								{
+									"include": "#interpolation"
+								},
+								{
+									"include": "#string_interpolation"
+								}
+							]
+						}
+					},
+					"end": "\\)",
+					"patterns": [
+						{
+							"include": "$self"
+						},
+						{
+							"include": "#param"
+						},
+						{
+							"include": "#attach"
+						},
+						{
+							"include": "#macro"
+						}
+					]
+				},
+				{
+					"begin": "import \\s*\\{",
 					"captures": {
 						"0": {
 							"name": "support.type.pipe.import"
@@ -364,7 +448,53 @@
 		"vars": {
 			"patterns": [
 				{
-					"begin": "vars\\s*\\{",
+					"begin": "var \\s*([\\w\\.-]+)\\s*(=)\\s*",
+					"beginCaptures": {
+						"0": {
+							"name": "support.type.pipe"
+						},
+						"1": {
+							"name": "variable.other.property.pipe"
+						},
+						"2": {
+							"name": "keyword.operator.pipe"
+						}
+					},
+					"end": "(?<!\\2)$",
+					"endCaptures": {
+						"0": {
+							"name": "keyword.operator.pipe"
+						}
+					},
+					"patterns": [
+						{
+							"include": "#numeric"
+						},
+						{
+							"include": "#constant"
+						},
+						{
+							"include": "#boolean"
+						},
+						{
+							"include": "#array"
+						},
+						{
+							"include": "#map"
+						},
+						{
+							"include": "#embedded"
+						},
+						{
+							"include": "#string"
+						},
+						{
+							"include": "#string_interpolation"
+						}
+					]
+				},
+				{
+					"begin": "var \\s*\\{",
 					"captures": {
 						"0": {
 							"name": "support.type.pipe"
