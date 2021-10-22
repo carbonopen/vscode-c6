@@ -316,7 +316,7 @@
 		"pipeline": {
 			"patterns": [
 				{
-					"begin": "pipe \\s*([\\w-]+)((\\s([\\w-]+))|)\\s*\\{",
+					"begin": "pipeline \\s*([\\w-]+)((\\s([\\w-]+))|)\\s*\\{",
 					"captures": {
 						"0": {
 							"name": "support.type.pipe"
@@ -330,6 +330,9 @@
 					},
 					"end": "\\}",
 					"patterns": [
+						{
+							"include": "$self"
+						},
 						{
 							"include": "#macro"
 						},
@@ -345,7 +348,7 @@
 					]
 				},
 				{
-					"begin": "pipe \\s*\\{",
+					"begin": "pipeline \\s*\\{",
 					"captures": {
 						"0": {
 							"name": "support.type.pipe"
@@ -353,6 +356,9 @@
 					},
 					"end": "\\}",
 					"patterns": [
+						{
+							"include": "$self"
+						},
 						{
 							"include": "#modules"
 						}
@@ -458,6 +464,9 @@
 						}
 					},
 					"patterns": [
+						{
+							"include": "$self"
+						},
 						{
 							"include": "#numeric"
 						},
@@ -646,7 +655,7 @@
 					},
 					"patterns": [
 						{
-							"include": "#comments"
+							"include": "$self"
 						},
 						{
 							"include": "#macro"
@@ -731,6 +740,9 @@
 						}
 					},
 					"patterns": [
+						{
+							"include": "$self"
+						},
 						{
 							"include": "#numeric"
 						},
