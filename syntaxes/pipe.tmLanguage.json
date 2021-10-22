@@ -490,6 +490,9 @@
 						},
 						{
 							"include": "#string_interpolation"
+						},
+						{
+							"include": "#interpolation"
 						}
 					]
 				},
