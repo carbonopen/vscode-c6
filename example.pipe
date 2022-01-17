@@ -1,135 +1,87 @@
-
 import {
-    setup (
-        git_url=`git@github.com/${git}.git`
+    bin "target/release/libhttp_server" "web" (
+        name="http"
     )
-
-    item=[
-        {
-            "result":  0
-        },
-        {
-            "result":  1
-        }
-    ]
-
-    item (
-        result=0
+    bin "target/release/libswitch" (
+        name="switch"
     )
-
-    runtime (
-        result=1
-    )
-
-
-    result=[
-        {
-            "result":  [0, true, {"float": 2.1}, [123]]
-        },
-        {
-            "result":  1
-        }
-    ]
-
-    result true {"float": 2.1} [123] ()
-    result 1 ()
-
-    git "pipehub/http" (
-        name=""
+    bin "target/release/libpayload" (
+        name="payload"
     )
 }
-
-vars {
-    port=${ env['PORT'] }
-    project_name="pipe Project"
-}
-
 
 pipeline {
-    handler {
-        script=```
-            fn fib(n) {
-                if n < 2 {
-                    n
-                } else {
-                    fib(n-1) + fib(n-2)
-                }
-            }
-
-            print(`Running Fibonacci(${payload.name}) x ${payload.lala} times...`);
-            print("Ready... Go!");
-        ```
-    }
-
-    handler {
-        command="go"
-        args=["--exec", ${ to_string(payload) 123 } ]
-    }
-
-    exec {
-        command="echo"
-        args=[${ to_string(payload) "asddas" 123 } ]
-        ok=${ payload }
-        error="ERRO!"
-    }
-
-    switch {
-        case "eq" true ${ ok item } ()
-    }
-
-    http init { // {"use": }
-        port=${ vars.port }
-        reutes ( // [{"reutes": [{"get": "/users", "method":"GET"},{path},{path}]}]
-            get "/users" (
-                attach request {
-                    url="http://other.api/users"
-                    item=true
-                    attach init
-                }
-            )
-
-            post [123] (
-                status_code="200"
-                body=```python
-                import
-                ```
-            )
-
-            post "/users" (
-                attach request {
-                    url="http://other.api/${ function("value") }"
-                    method="GET"
-                    payload= {
-                        "username": ${ body.first_name + body.init  }
-                    }
-                    attach init
-                }
-            )
-
-            put {"item": true} (
-                method=POST
-                attach db_save
-            )
-
-            path [true, 123] (
-                method="POST"
-                array=[123, "123", ${ payload }, true]
-                attach db_save
-            )
+    payload init {
+        port="127.0.0.1:8080"
+        route(
+            path="/send/{number}"
+            pipe cases
         )
+        route(
+            path="/health"
+            | health
+        )
+    } :producer
 
-        /* Comment block
-            path "/users" {
-                method=POST
-                attach save
-            }
-        */
-        attach init
+    test {} :order(2, true, null, ok)
 
-        attach request {
-            url="http://other.api/users"
-            method="GET"
-            attach init
+    switch cases {
+        // condition ${ params.number } "eq" "other" (
+        //     | other
+        // )
+        condition "eq params.number (string number)" (
+            | number
+        )
+        operator "eq" (
+            left=${ params.number }
+            right="other"
+            | other
+        )
+        | default
+    } :order(4)
+
+    payload number {
+        status_code=403
+        body={
+            "value": ${ params.number },
+            "type": "number"
         }
+        headers={
+            "content-type": "application/json"
+        }
+        | init
+    }
+
+    payload other {
+        status_code=200
+        body={
+            "value": ${ params.number },
+            "type": "other"
+        }
+        headers={
+            "content-type": "application/json"
+        }
+        | init
+    }
+
+    payload default {
+        status_code=201
+        body={
+            "value": ${ params.number },
+            "type": "default"
+        }
+        headers={
+            "content-type": "application/json"
+        }
+        | init
+    }
+
+    payload health {
+        status_code=200
+        body="check"
+        headers={
+            "content-type": "plain/text"
+        }
+        | init
     }
 }

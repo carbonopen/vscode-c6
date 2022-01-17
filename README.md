@@ -1,6 +1,6 @@
-# pipe Pipeline
+# Pipe Lang
 
-This is the README for your extension "pipe". After writing up a brief description, we recommend including the following sections.
+Extenssão para desenvolvimento da Pipe Lang
 
 ## Features
 
