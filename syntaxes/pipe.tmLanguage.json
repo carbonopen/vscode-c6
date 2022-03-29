@@ -594,7 +594,7 @@
 		"param": {
 			"patterns": [
 				{
-					"begin": "([\\w\\.-]+)\\s*(=)\\s*",
+					"begin": "([\\w\\.-]+)\\s*(=|:)\\s*",
 					"beginCaptures": {
 						"1": {
 							"name": "variable.other.property.pipe"
@@ -636,8 +636,24 @@
 						},
 						{
 							"include": "#string_interpolation"
+						},
+						{
+							"include": "#struct"
 						}
 					]
+				}
+			]
+		},
+		"struct": {
+			"patterns": [
+				{
+					"comment": "Types and Structs",
+					"match": "[A-Z]([a-z].*[a-zA-z0-9_]?)?",
+					"captures": {
+						"0": {
+							"name": "entity.name.class.pipe"
+						}
+					}
 				}
 			]
 		},
