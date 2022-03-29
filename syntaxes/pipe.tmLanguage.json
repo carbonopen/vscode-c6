@@ -648,7 +648,7 @@
 			"patterns": [
 				{
 					"comment": "Types and Structs",
-					"match": "[A-Z]([a-z].*[a-zA-z0-9_]?)?",
+					"match": "[A-Z]([a-z]*[a-zA-Z0-9_]?)?",
 					"captures": {
 						"0": {
 							"name": "entity.name.class.pipe"
