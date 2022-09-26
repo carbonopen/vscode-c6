@@ -1,6 +1,6 @@
-# Pipe Lang
+# LabLang Lang
 
-Extenssão para desenvolvimento da Pipe Lang
+Extenssão para desenvolvimento da LabLang Lang
 
 ## Features
 

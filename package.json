@@ -1,7 +1,7 @@
 {
-    "name": "pipe",
-    "displayName": "pipe Pipeline",
-    "description": "pipe Pipeline support language",
+    "name": "lab",
+    "displayName": "lab Pipeline",
+    "description": "lab Pipeline support language",
     "version": "0.0.1",
     "icon": "icon.png",
     "engines": {
@@ -13,22 +13,22 @@
     "contributes": {
         "languages": [
             {
-                "id": "pipe",
+                "id": "lab",
                 "aliases": [
-                    "Pipe",
-                    "pipe"
+                    "LabLang",
+                    "lab"
                 ],
                 "extensions": [
-                    "pipe"
+                    "lab"
                 ],
                 "configuration": "./language-configuration.json"
             }
         ],
         "grammars": [
             {
-                "language": "pipe",
-                "scopeName": "source.pipe",
-                "path": "./syntaxes/pipe.tmLanguage.json"
+                "language": "lab",
+                "scopeName": "source.lab",
+                "path": "./syntaxes/lab.tmLanguage.json"
             }
         ]
     }
