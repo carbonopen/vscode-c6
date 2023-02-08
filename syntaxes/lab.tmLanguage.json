@@ -10,7 +10,7 @@
 			"include": "#import"
 		},
 		{
-			"include": "#vars"
+			"include": "#args"
 		},
 		{
 			"include": "#config"
@@ -361,10 +361,10 @@
 				}
 			]
 		},
-		"vars": {
+		"args": {
 			"patterns": [
 				{
-					"begin": "vars\\s*\\{",
+					"begin": "args\\s*\\{",
 					"captures": {
 						"0": {
 							"name": "support.type.lab"

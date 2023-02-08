@@ -1,87 +1,29 @@
 import {
-    bin "target/release/libhttp_server" "web" (
-        name="http"
-    )
-    bin "target/release/libswitch" (
-        name="switch"
-    )
-    bin "target/release/libpayload" (
-        name="payload"
-    )
+   mod "./print" ()
+   generic "exit" ()
+}
+
+args {
+   global: Number = 1;
 }
 
 pipeline {
-    payload init {
-        port="127.0.0.1:8080"
-        route(
-            path="/send/{number}"
-            lab cases
-        )
-        route(
-            path="/health"
-            | health
-        )
-    } :producer
+   print{
+        text=${ vars.global }
+        origin=1
+     }
 
-    test {} :order(2, true, null, ok)
+   print{
+        text="baby"
+        origin=1
+     }
 
-    switch cases {
-        // condition ${ params.number } "eq" "other" (
-        //     | other
-        // )
-        condition "eq params.number (string number)" (
-            | number
-        )
-        operator "eq" (
-            left=${ params.number }
-            right="other"
-            | other
-        )
-        | default
-    } :order(4)
+   print{
+        text="love"
+        origin=1
+   }
 
-    payload number {
-        status_code=403
-        body={
-            "value": ${ params.number },
-            "type": "number"
-        }
-        headers={
-            "content-type": "application/json"
-        }
-        | init
-    }
-
-    payload other {
-        status_code=200
-        body={
-            "value": ${ params.number },
-            "type": "other"
-        }
-        headers={
-            "content-type": "application/json"
-        }
-        | init
-    }
-
-    payload default {
-        status_code=201
-        body={
-            "value": ${ params.number },
-            "type": "default"
-        }
-        headers={
-            "content-type": "application/json"
-        }
-        | init
-    }
-
-    payload health {
-        status_code=200
-        body="check"
-        headers={
-            "content-type": "plain/text"
-        }
-        | init
-    }
+   exit{}
 }
+
+
